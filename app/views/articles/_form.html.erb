@@ -4,9 +4,9 @@
 </p>
 <p class="form">
   <%= f.label :body, nil, :class => "form" %>
-  <%= f.text_area :body%>
+  <%= f.text_area :body, :class => "form" %>
 </p>
-<p class="form">
+<p class="form" style="margin-top: 10px;">
   <%= f.label :status, nil, :class => "form" %>
   <%= collection_select(:article, :status, Article.statuses, :to_s, :to_s) %>
 </p>
