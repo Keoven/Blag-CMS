@@ -187,6 +187,7 @@ h1 a span{
 	background:url(../images/footerline.jpg) left top repeat-x #0e1424;
 	clear:both;
 		margin:20px 0 0px 0;
+        display: none;
 }
 
 #footer .content {
