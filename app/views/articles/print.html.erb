@@ -1,0 +1,9 @@
+<div class='blog-entry'>
+  <h2 class='blog-title'><%= @article.title %></h2>
+  <h4 class='blog-author'>
+    <%= @article.date_posted.strftime("%B %d, %Y") %> by <%= @article.author.full_name  %>
+  </h4>
+  <p class='blog-body'>
+    <%= @article.body %>
+  </p>
+</div>

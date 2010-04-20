@@ -1,0 +1,10 @@
+<h1>Edit Article</h1>
+<div class="toppadding">
+  <% form_for(@article) do |f| %>
+  <%= f.error_messages %>
+    <%= render :partial => "form", :locals => {:f => f} %>
+    <p>
+      <%= f.submit "Update" %>
+    </p>
+  <% end %>
+</div>

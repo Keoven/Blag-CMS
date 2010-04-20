@@ -1,0 +1,29 @@
+<h1>List of All Articles</h1>
+<div class="toppadding">
+  <% if @articles.nitems != 0 %>
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr id="head">
+      <th>Title</th>
+      <th>Body</th>
+      <th>Status</th>
+      <th>Author</th>
+      <th colspan="4">Date Posted</th>
+    </tr>
+    <% i = 0 %>
+    <% @articles.each do |article|%>
+    <tr class="<%= i % 2 == 1 ? "rowodd" : "roweven" %>">
+      <td><%= article.title %></td>
+      <td><%= article.body %></td>
+      <td><%= article.status %></td>
+      <td><%= Author.find(article.author_id).full_name %></td>
+      <td><%= article.date_posted %></td>
+      <td><%= link_to "Edit", edit_article_path(article) %></td>
+      <td><%= link_to "Show", article_path(article) %></td>
+      <td><%= link_to "Delete", article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?", :method => :delete %></td>
+    </tr>
+    <% i += 1 %>
+    <% end %>
+  </table>
+  <% end %>
+<%= link_to "Create New Article", new_article_path %>
+</div>

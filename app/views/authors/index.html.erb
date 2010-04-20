@@ -1,0 +1,13 @@
+<h1>List of All Authors</h1>
+<div class="toppadding">
+  <% if @authors.nitems != 0 %>
+    <% i = 0 %>
+    <% @authors.each do |author|%>
+      <%= author_pane(author, i) %>
+    <% i += 1 %>
+    <% end %>
+  <% end %>
+<hr/>
+
+<%= link_to "Create New Author", new_author_path %>
+</div>

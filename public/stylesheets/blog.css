@@ -1,0 +1,95 @@
+.blog-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px 5px 0px 5px;
+}
+
+.blog-author {
+  font-size: 12px;
+  padding: 0px 20px 0px 5px;
+}
+
+.blog-sidebar {
+  padding: 10px;
+}
+
+.blog-sidebar a{
+  height: 20px;
+  display: inline-block;
+}
+
+.blog-body {
+  margin: 20px;  
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  text-align: justify;
+}
+
+.blog-comments {
+  margin: 10px 0px 10px 20px;
+}
+
+.blog-comment {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.comment-body {
+  margin-top: 10px;
+  margin-right: 20px;
+  background-color: #233146;
+  border: 0.1em solid white;
+  padding: 0.5em;
+  text-align: justify;
+}
+
+.blog-entry {
+  padding-bottom: 2.5px;
+}
+
+.new-comment-body {
+  margin-left: 20px;
+}
+
+.new-comment-email, .fieldWithErrors {
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea{
+  background-color: #BA314D;
+  color: white;
+}
+
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+input[type="text"], textarea{
+  width: 100%;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  float: right;
+}
+
+form {
+  margin-right: 25px;
+  padding-bottom: 25px;
+}
+
+div#errorExplanation {
+  background-color: #85A4C1;
+  border: 0.3em solid #2C3D58;
+  padding: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+div#errorExplanation ul {
+  margin-left: 40px;
+}
+
+

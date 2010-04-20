@@ -1,0 +1,13 @@
+<h1><%= @author.last_name + ", " + @author.first_name %></h1>
+<div class="toppadding">
+  <p>
+    Remarks: <%= @author.remarks %>
+  </p>
+  <p>
+    Birthday: <%= @author.birthday %>
+  </p>
+  <p>
+    <%= link_to "Back to Authors Index", authors_path %>
+    <%= link_to "Delete", @author, :confirm => "Are you sure you wane to delete author \"#{@author.full_name}\"?", :method => :delete %>
+  </p>
+</div>

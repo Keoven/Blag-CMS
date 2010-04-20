@@ -1,0 +1,20 @@
+<p>
+  <%= f.label :title %> <br/>
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :body %> <br/>
+  <%= f.text_area :body %>
+</p>
+<p>
+  <%= f.label :status %> <br/>
+  <%= collection_select(:article, :status, Article.statuses, :to_s, :to_s) %>
+</p>
+<p>
+  <%= f.label :author %> <br/>
+  <%= collection_select(:article, :author_id, Author.all, :id, :full_name) %>
+</p>
+<p>
+  <%= f.label :date_posted %> <br/>
+  <%= f.datetime_select :date_posted %>
+</p>

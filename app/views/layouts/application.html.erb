@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Design Portfolio Template</title>
+<%= stylesheet_link_tag "style" %>
+<%= stylesheet_link_tag "blog" %>
+<script type='text/javascript' src='http://vectorart.org/wp-content/themes/vector/images/jquery.js'></script> 
+
+</head>
+
+<body>
+
+
+<div id="top">
+</div><!-- top -->
+
+<div id="topline">	
+</div><!-- topline -->
+
+
+<div id="wrapper">
+
+    	<div class="content">
+    	
+             <div id="header">
+             
+                    <h1><a href="#"><span>your design</span>portfolio</a></h1>
+                    
+                     <div id="menu">
+                
+                        <ul>	
+                            <li><%= link_to "home", "/" %></li>
+                            <li class="selected"><%= link_to "articles", articles_path %></li>
+                            <li><%= link_to "authors", authors_path %></li>
+                            <li><a href="#">about</a></li>
+                            <li><a href="#">contact us</a></li>
+                        </ul>
+                    
+                	</div><!-- menu -->
+                
+             </div><!--header-->
+             
+               <div class="sidebar">
+                 <%= render :partial => "articles/sidebar" %>
+
+             </div><!--sidebar-->
+             
+             <div id="container">
+                <!-- <%= flash[:notice] %> -->
+             	<%= yield %>
+             </div><!--container-->                        
+                        	
+        </div><!--content-->
+        
+    </div><!--wrapper-->
+    
+<div id="footer">
+    	<div class="content">
+                   <a href="#"><span class="leftp">copyright 2010 G2iX : By Nelvin Driz</span></a>
+                   <a href="http://vectorart.org"><span class="rightp"> Thanks to VectorArt</span></a>
+                 </div><!--content-->
+                        
+</div><!--footer-->        
+</body>
+</html>

@@ -1,0 +1,15 @@
+--- 
+dependencies: []
+
+plugins: []
+
+source_info: 
+  scm_tag: ""
+  scm_url: ""
+release_info: 
+  repository: ecc-releases
+  server: http://pip.manila.exist.com
+  group_id: nelvin_driz
+  type: tar.gz
+  version: 0.0.6
+  artifact_id: blag
