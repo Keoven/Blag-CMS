@@ -1,20 +1,17 @@
 <p>
-  <%= f.label :title %> <br/>
-  <%= f.text_field :title %>
+  <%= f.label :title, nil, :class => "form" %>
+  <%= f.text_field :title, :class => "form" %>
 </p>
-<p>
-  <%= f.label :body %> <br/>
-  <%= f.text_area :body %>
+<p class="form">
+  <%= f.label :body, nil, :class => "form" %>
+  <%= f.text_area :body%>
 </p>
-<p>
-  <%= f.label :status %> <br/>
+<p class="form">
+  <%= f.label :status, nil, :class => "form" %>
   <%= collection_select(:article, :status, Article.statuses, :to_s, :to_s) %>
 </p>
-<p>
-  <%= f.label :author %> <br/>
+<p class="form">
+  <%= f.label :author, nil, :class => "form" %>
   <%= collection_select(:article, :author_id, Author.all, :id, :full_name) %>
 </p>
-<p>
-  <%= f.label :date_posted %> <br/>
-  <%= f.datetime_select :date_posted %>
-</p>
+<%= f.hidden_field :date_posted, :value => "#{DateTime.now.strftime("%Y%m%d%H%M%S")}" %>

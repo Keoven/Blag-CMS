@@ -19,6 +19,10 @@ module AuthorsHelper
       end
       str.empty? ? "<tr><td colspan=\"2\" class=\"article\">None</td></tr>" : str}
     <tr>
+      <td style="height: 10px;">
+      </td>
+    </tr>
+    <tr>
       <td colspan=\"2\" class=\"cellcontrol\">
         #{link_to "Edit", edit_author_path(author)} #{link_to "Show", author_path(author)} 
         #{link_to "Delete", author, :confirm => "Are you sure you wane to delete author \"

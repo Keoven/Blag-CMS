@@ -12,18 +12,19 @@
     <% i = 0 %>
     <% @articles.each do |article|%>
     <tr class="<%= i % 2 == 1 ? "rowodd" : "roweven" %>">
-      <td><%= article.title %></td>
-      <td><%= article.body %></td>
+      <td><%= truncate(article.title, :length => 10) %></td>
+      <td><%= truncate(article.body, :length => 10) %></td>
       <td><%= article.status %></td>
       <td><%= Author.find(article.author_id).full_name %></td>
       <td><%= article.date_posted %></td>
-      <td><%= link_to "Edit", edit_article_path(article) %></td>
-      <td><%= link_to "Show", article_path(article) %></td>
-      <td><%= link_to "Delete", article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?", :method => :delete %></td>
+      <td style="vertical-align: middle; text-align: center; width: 50px"><%= link_to "Edit", edit_article_path(article), :class => "offlink" %></td>
+      <td style="vertical-align: middle; text-align: center; width: 50px"><%= link_to "Show", article_path(article), :class => "offlink" %></td>
+      <td style="vertical-align: middle; text-align: center; width: 50px"><%= link_to "Delete", article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?", :method => :delete, :class => "offlink" %></td>
     </tr>
     <% i += 1 %>
     <% end %>
   </table>
   <% end %>
-<%= link_to "Create New Article", new_article_path %>
+<hr/>
+<%= link_to "Create New Article", new_article_path, :style => "float: right; margin-right: 10px;" %>
 </div>

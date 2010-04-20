@@ -1,16 +1,33 @@
 <p>
-  <%= f.label :last_name %> <br/>
-  <%= f.text_field :last_name %>
+  <%= f.label :last_name, nil, :class => "form" %>
+  <%= f.text_field :last_name, :class => "form" %>
 </p>
 <p>
-  <%= f.label :first_name %> <br/>
-  <%= f.text_field :first_name %>
+  <%= f.label :first_name, nil, :class => "form" %>
+  <%= f.text_field :first_name, :class => "form" %>
+</p>
+<p class="form">
+  <%= f.label :remarks, nil, :class => "form" %>
+  <%= f.text_area :remarks, :class => "form" %>
+</p>
+<p class="form">
+  <%= f.label :birthday, nil, :class => "form" %>
+  <% date = Date.today - 70.years %>
+  <%= f.date_select :birthday, :class => "form", :start_year => 1930 %>
 </p>
 <p>
-  <%= f.label :remarks %> <br/>
-  <%= f.text_area :remarks %>
+  <%= f.label :login, nil, :class => "form" %>
+  <%= f.text_field :login, :class => "form" %>
 </p>
 <p>
-  <%= f.label :birthday %> <br/>
-  <%= f.datetime_select :birthday %>
+  <%= f.label :email, nil, :class => "form" %>
+  <%= f.text_field :email, :class => "form" %>
+</p>
+<p>
+  <%= f.label :password, nil, :class => "form" %>
+  <%= f.password_field :password, :class => "form" %>
+</p>
+<p>
+  <%= f.label :password_confirmation, nil, :class => "form" %>
+  <%= f.password_field :password_confirmation, :class => "form" %>
 </p>

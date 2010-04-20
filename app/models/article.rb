@@ -1,7 +1,8 @@
 class Article < ActiveRecord::Base
   belongs_to :author
   has_many :comments
-  validates_presence_of [:title, :body], :message => "Title and body required."
+  validates_presence_of [:title, :body, :author], :message => "is required."
+
   
   def self.statuses
     ["Draft", "Posted"]

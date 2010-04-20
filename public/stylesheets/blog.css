@@ -67,13 +67,29 @@ label {
   display: block;
 }
 
+label.form {
+  margin-bottom: 0px;
+}
+
 input[type="text"], textarea{
   width: 100%;
+}
+
+input.form, .form {
+  margin-bottom: 10px;
+}
+
+div.comment-body ul, div.comment-body ol {
+  margin-left: 28px;
 }
 
 input[type="submit"] {
   margin-top: 10px;
   float: right;
+}
+
+input[type="password"]{
+  width: 100%
 }
 
 form {
@@ -90,6 +106,10 @@ div#errorExplanation {
 
 div#errorExplanation ul {
   margin-left: 40px;
+}
+
+h1 {
+  margin: 10px;
 }
 
 

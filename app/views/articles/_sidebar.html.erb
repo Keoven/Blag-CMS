@@ -1,9 +1,12 @@
-<h2 class='blog-title'>Recent Articles</h2>
+<div style="padding: 5px; text-align: right; background-color: #42526B; color: white; -moz-border-radius: 3px; -webkit-border-radius: 3px;">
+  <%= (logged_in?) ? "Good day, #{current_author.full_name}!<br />#{link_to "Logout?", logout_path, :class => "offlink"}" : "#{link_to "Login to your account...", login_path, :class => "offlink" }"%>
+</div>
+<h2 class='blog-title' style="color:white; text-shadow: 1px 1px black;">Recent Articles</h2>
 <div class='blog-sidebar'>
   <% Article.find(:all, :limit => 10).each do |article| %>
     <% unless article == @article or !article.posted?%>
-      <%= link_to "#{truncate(article.title, :length => 20)}", article_path(article) %>
-      <span style="float:right;"><%= article.author.full_name %></span>
+      <%= link_to "#{truncate(article.title, :length => 20)}", article_path(article), :style => "text-shadow: 1px 1px black;" %>
+      <span style="float:right; color:white; text-shadow: 1px 1px black;">by <%= article.author.full_name %></span>
       <br/>
     <% end %>
   <% end %>

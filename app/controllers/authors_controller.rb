@@ -1,4 +1,6 @@
 class AuthorsController < ApplicationController
+  before_filter :require_author, :only => [:new, :create]
+
   def index
     @authors = Author.all
   end
