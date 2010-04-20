@@ -187,7 +187,6 @@ h1 a span{
 	background:url(../images/footerline.jpg) left top repeat-x #0e1424;
 	clear:both;
 		margin:20px 0 0px 0;
-        display: none;
 }
 
 #footer .content {
@@ -385,5 +384,11 @@ a.offlink:hover {
 .toppadding {
   margin-left: 25px;
   margin-right: 25px;
+}
+
+.article-index-entry {
+  vertical-align: middle; 
+  text-align: center; 
+  width: 50px
 }
 

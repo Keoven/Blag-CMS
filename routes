@@ -1,0 +1,26 @@
+(in C:/msys/1.0/home/T/blag)
+             authors GET    /authors(.:format)                                {:action=>"index", :controller=>"authors"}
+                     POST   /authors(.:format)                                {:action=>"create", :controller=>"authors"}
+          new_author GET    /authors/new(.:format)                            {:action=>"new", :controller=>"authors"}
+         edit_author GET    /authors/:id/edit(.:format)                       {:action=>"edit", :controller=>"authors"}
+              author GET    /authors/:id(.:format)                            {:action=>"show", :controller=>"authors"}
+                     PUT    /authors/:id(.:format)                            {:action=>"update", :controller=>"authors"}
+                     DELETE /authors/:id(.:format)                            {:action=>"destroy", :controller=>"authors"}
+    article_comments GET    /articles/:article_id/comments(.:format)          {:action=>"index", :controller=>"comments"}
+                     POST   /articles/:article_id/comments(.:format)          {:action=>"create", :controller=>"comments"}
+ new_article_comment GET    /articles/:article_id/comments/new(.:format)      {:action=>"new", :controller=>"comments"}
+edit_article_comment GET    /articles/:article_id/comments/:id/edit(.:format) {:action=>"edit", :controller=>"comments"}
+     article_comment GET    /articles/:article_id/comments/:id(.:format)      {:action=>"show", :controller=>"comments"}
+                     PUT    /articles/:article_id/comments/:id(.:format)      {:action=>"update", :controller=>"comments"}
+                     DELETE /articles/:article_id/comments/:id(.:format)      {:action=>"destroy", :controller=>"comments"}
+     latest_articles GET    /articles/latest(.:format)                        {:action=>"latest", :controller=>"articles"}
+            articles GET    /articles(.:format)                               {:action=>"index", :controller=>"articles"}
+                     POST   /articles(.:format)                               {:action=>"create", :controller=>"articles"}
+         new_article GET    /articles/new(.:format)                           {:action=>"new", :controller=>"articles"}
+        edit_article GET    /articles/:id/edit(.:format)                      {:action=>"edit", :controller=>"articles"}
+             article GET    /articles/:id(.:format)                           {:action=>"show", :controller=>"articles"}
+                     PUT    /articles/:id(.:format)                           {:action=>"update", :controller=>"articles"}
+                     DELETE /articles/:id(.:format)                           {:action=>"destroy", :controller=>"articles"}
+                root        /                                                 {:action=>"latest", :controller=>"articles"}
+                            /:controller/:action/:id                          
+                            /:controller/:action/:id(.:format)                
