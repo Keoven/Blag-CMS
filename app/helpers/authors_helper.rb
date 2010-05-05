@@ -1,5 +1,6 @@
 module AuthorsHelper
   #Return list of all authors
+  #
   def author_list(authors)
     str = String.new
     if authors.nitems != 0
