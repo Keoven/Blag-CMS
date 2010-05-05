@@ -9,7 +9,7 @@ module ApplicationHelper
   #except the currently shown article if any
   #
   def retrieve_side_pane_contents(current_article)
-    current_article = nil if current_article.new_record?
+    current_article = nil if current_article.nil? or current_article.new_record?
     str = String.new
     Article.recent_posts(10, (current_article.nil?) ? "" : "AND id <> \"#{current_article.id}\"" ).each do |article|
       str << %Q{ #{ link_to "#{truncate(article.title, :length => 20)}", article_path(article), :style => 'text-shadow: 1px 1px black' }

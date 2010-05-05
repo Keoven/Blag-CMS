@@ -1,4 +1,18 @@
 module AuthorsHelper
+  #Return list of all authors
+  def author_list(authors)
+    str = String.new
+    if authors.nitems != 0
+      i = 0
+      authors.each do |author|
+        str << author_pane(author, i)
+        i += 1
+      end
+    end
+    return str
+  end
+
+  private
   #Returns the author's HTML formatted author entry for Authors Index
   #
   def author_pane(author, i)
@@ -6,7 +20,7 @@ module AuthorsHelper
     #{(i % 2 == 1) ? "<div class='rowodd'><table>" : "<div class='roweven'><table>"}
     <tr>
       <th>Name:</th>
-      <td>#{author.full_name}</td>
+      <td>#{full_name(author)}</td>
     </tr>
     <tr>
       <th>Birthday:</th>
@@ -28,7 +42,7 @@ module AuthorsHelper
       <td colspan='2' class='cellcontrol'>
         #{link_to 'Edit', edit_author_path(author)} #{link_to 'Show', author_path(author)}
         #{link_to 'Delete', author, :confirm => "Are you sure you wane to delete author \"
-        #{author.full_name}\"?", :method => :delete}
+        #{full_name(author)}\"?", :method => :delete}
       </td>
     </tr>
     </table></div>
