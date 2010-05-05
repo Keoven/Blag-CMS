@@ -15,8 +15,8 @@
       <td><%= truncate(article.title, :length => 10) %></td>
       <td><%= truncate(article.body, :length => 10) %></td>
       <td><%= article.status %></td>
-      <td><%= Author.find(article.author_id).full_name %></td>
-      <td><%= article.date_posted %></td>
+      <td><%= full_name(Author.find(article.author_id)) %></td>
+      <td><%= formatted_date_posted(article) %></td>
       <td class="article-index-entry"><%= link_to "Edit", edit_article_path(article), :class => "offlink" %></td>
       <td class="article-index-entry"><%= link_to "Show", article_path(article), :class => "offlink" %></td>
       <td class="article-index-entry"><%= link_to "Delete", article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?", :method => :delete, :class => "offlink" %></td>

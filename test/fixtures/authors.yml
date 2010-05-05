@@ -5,9 +5,13 @@ one:
   first_name: MyString
   remarks: MyText
   birthday: 2010-04-16
+  login: MyPassword
+  email: My@Email.com
 
 two:
   last_name: MyString
   first_name: MyString
   remarks: MyText
   birthday: 2010-04-16
+  login: MyPassword
+  email: My@Email.com

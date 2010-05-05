@@ -6,9 +6,10 @@ class ArticleTest < ActiveSupport::TestCase
     @@a_no_body = Article.new(:title => "Vook")
     @@a_no_title = Article.new(:body => "Budy")
 
-    @@a_incomplete = Article.new(:title => "Book1", :body => "The Story")
-    @@a_not_draft_or_posted = Article.new(:title => "Book1", :body => "The Story", :status => "abc")
-    @@a_complete = Article.new(:title => "Book1", :body => "The Story", :status => "Draft")
+    @@a_incomplete = Article.new(:title => "Book1", :body => "The Story", :author_id => "1")
+    @@a_not_draft_or_posted = Article.new(:title => "Book1", :body => "The Story", :status => "abc", :author_id => "1")
+    @@author = Author.create()
+    @@a_complete = Article.new(:title => "Book1", :body => "The Story", :status => "Draft", :author => @@author)
   end
 
   test "should have many comments" do
@@ -31,6 +32,10 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal false, @@a_incomplete.save
     assert_equal false, @@a_not_draft_or_posted.save
     assert_equal true, @@a_complete.save
+    @@a_complete.save
+    assert_nil @@a_complete.errors.on(:status)
+#    puts
+#    puts @@a_complete.errors.full_messages
   end
   
   teardown do

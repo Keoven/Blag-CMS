@@ -1,7 +1,7 @@
 <div class='blog-entry'>
   <h2 class='blog-title'><%= @article.title %></h2>
   <h4 class='blog-author'>
-    <%= @article.date_posted.strftime("%B %d, %Y") %> by <%= @article.author.full_name  %>
+    <%= formatted_date_posted(@article) %> by <%= full_name(@article.author)  %>
     <span style="float: right"><%= link_to "Print this article", print_article_path(@article) %></span>
   </h4>
   <div class='blog-body'>
@@ -9,9 +9,7 @@
   </div>
   <div class='blog-comments'>
     <%= "<h2 class='blog-title'>Comments</h2>" unless @article.comments.nitems == 1 %>
-    <% @article.comments.each do |comment| %>
-      <%= article_comments(comment) %>
-    <% end %>
+    <%= retrieve_article_comments(@article) %>
     <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
   </div>
 </div>

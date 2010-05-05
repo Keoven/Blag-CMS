@@ -8,7 +8,7 @@
 </p>
 <p class="form" style="margin-top: 10px;">
   <%= f.label :status, nil, :class => "form" %>
-  <%= collection_select(:article, :status, Article.statuses, :to_s, :to_s) %>
+  <%= collection_select(:article, :status, Article::STATUSES, :to_s, :to_s) %>
 </p>
 <p class="form">
   <%= f.label :author, nil, :class => "form" %>

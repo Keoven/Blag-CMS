@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def latest
     @article = Article.latest
     unless @article.nil?
-      @comment = Comment.new(:article_id => @article.id)
+      @comment = @article.comments.build
     else
       redirect_to(articles_url)
     end
