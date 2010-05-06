@@ -2,12 +2,17 @@ require 'test_helper'
 
 class CommentTestDeletion < ActiveSupport::TestCase
   def setup
-     @author = authors(:one)
-     @author2 = authors(:two)
-#    @author = Author.create(:first_name => "X", :last_name => "Y", :email => "a@a.com", :login => "X")
-#    @author2 = Author.create(:first_name => "Y", :last_name => "x", :email => "b@b.com", :login => "Y")
+    @author = authors(:one)
+    @author2 = authors(:two)
     @article = articles(:one)
     @comment = comments(:one)
+  end
+
+  def teardown
+    @author.destroy
+    @author2.destroy
+    @article.destroy
+    @comment.destroy
   end
 
   test "should be able to delete comment using author_id" do
