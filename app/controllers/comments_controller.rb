@@ -17,4 +17,11 @@ class CommentsController < ApplicationController
     redirect_to article_comments_path(@comment.article_id)
   end
 
+  def destroy_by_author
+    @comment = Comment.find(params[:id])
+    @article = @comment.article_id
+    @comment.delete_by_author(params[:author_id])
+    redirect_to article_path(@article)
+  end
+
 end

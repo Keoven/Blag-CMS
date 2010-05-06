@@ -6,7 +6,13 @@ class CommentsControllerTest < ActionController::TestCase
     @author2 = authors(:two)
     @article = articles(:one)
     @comment = comments(:one)
-    #@controller = CommentsController.new
+  end
+
+  def teardown
+    @author.destroy
+    @author2.destroy
+    @article.destroy
+    @comment.destroy
   end
   
   test "author should be able to delete comments on owned articles" do
@@ -14,7 +20,7 @@ class CommentsControllerTest < ActionController::TestCase
     @article.save
     @article.comments << @comment
     assert_difference '@article.comments(true).count', -1 do
-      post :destroy, :id => @comment.to_param, :author_id => @author.to_param, :method => :delete    
+      delete :destroy_by_author, :id => @comment.to_param, :author_id => @author.to_param
     end
   end
 
@@ -23,7 +29,7 @@ class CommentsControllerTest < ActionController::TestCase
     @article.save
     @article.comments << @comment
     assert_no_difference '@article.comments.count' do
-      delete :destroy, :id => @comment.to_param, :author_id => @author2.to_param
+      delete :destroy_by_author, :id => @comment.to_param, :author_id => @author2.to_param
     end
   end
 end
