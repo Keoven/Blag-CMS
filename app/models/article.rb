@@ -46,6 +46,6 @@ class Article < ActiveRecord::Base
   private
   #Set the date posted if the status of article is now 'Posted'
   def set_date_posted
-    date_posted = DateTime.now if status.eql?('Posted')
+    self.date_posted = DateTime.now if posted?
   end
 end

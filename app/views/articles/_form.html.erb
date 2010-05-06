@@ -14,4 +14,3 @@
   <%= f.label :author, nil, :class => "form" %>
   <%= collection_select(:article, :author_id, Author.all, :id, :full_name) %>
 </p>
-<%= f.hidden_field :date_posted, :value => "#{DateTime.now.strftime("%Y%m%d%H%M%S")}" %>

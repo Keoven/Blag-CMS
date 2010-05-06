@@ -25,7 +25,7 @@ module ArticlesHelper
   #Return formatted date posted with format "<Month> <Day>, <Year>"
   #
   def formatted_date_posted(article)
-    article.date_posted.strftime('%B %d, %Y')
+    article.date_posted.strftime('%B %d, %Y') unless article.date_posted.nil?
   end
 
   private
