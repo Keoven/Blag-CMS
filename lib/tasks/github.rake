@@ -4,9 +4,9 @@ namespace 'ghub' do
     if args.msg.nil?
       puts 'Please supply message for update.'
     else
-      system('git add', '.')
-      system('git commit', "-am #{args.msg}")
-      system('git push', 'github master')
+      `git add .`
+      `git commit #{"-am #{args.msg}"}`
+      `git push github master`
     end
   end
 end
