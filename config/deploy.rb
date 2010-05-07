@@ -10,6 +10,7 @@ role :db,  "175.41.165.67", :primary => true
 
 set :use_sudo, false
 set :deploy_to, "mnt/webapps/#{application}"
+set :user, "nelvin"
 
 namespace :deploy do
 
