@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     unless @article.nil?
       @comment = @article.comments.build
     else
-      redirect_to(articles_url)
+      (logged_in?) ? redirect_to(articles_url) : redirect_to(new_session_url)
     end
   end
 

@@ -28,3 +28,11 @@ namespace :deploy do
   after "deploy:setup", "deploy:config_app"
 
 end
+
+namespace :utils do
+
+  task :tail_log do
+    run "tail -f #{deploy_to}/current/log/production.log"
+  end
+
+end

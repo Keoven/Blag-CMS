@@ -5,7 +5,7 @@ class Author < ActiveRecord::Base
 
   #PLUGINS
   #
-  acts_as_authentic
+  acts_as_authentic { |c| c.login_field = :login }
 
   #VALIDATIONS
   #
