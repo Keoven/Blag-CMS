@@ -41,8 +41,8 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: blag_production
+  database: nelvin
   pool: 5
-  username: root
-  password: root
+  username: nelvin
+  password: nelvin
   socket: /var/run/mysqld/mysqld.sock
