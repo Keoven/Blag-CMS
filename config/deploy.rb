@@ -1,5 +1,5 @@
 set :application, "Blag"
-set :repository,  "git@github.com:Keoven/Blag-CMS.git"
+set :repository, "git://github.com/Keoven/Blag-CMS.git"
 
 set :scm, :git
 
