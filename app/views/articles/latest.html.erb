@@ -12,6 +12,6 @@
   </div>
   <div id="blog-comments" class='blog-comments'>
     <%= retrieve_article_comments(@article) %>
-    <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
   </div>
+  <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
 </div>

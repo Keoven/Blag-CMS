@@ -86,23 +86,6 @@ module ArticlesHelper
     article.date_posted.strftime('%B %d, %Y') unless article.date_posted.nil?
   end
 
-  private
-
-  #Returns HTML formatted article
-  #
-  def format_article(article)
-    %Q{ <td>#{truncate(article.title, :length => 10)}</td>
-        <td>#{truncate(article.body, :length => 10)}</td>
-        <td>#{article.status}</td>
-        <td>#{full_name(Author.find(article.author_id))}</td>
-        <td>#{formatted_date_posted(article)}</td>
-        <td class="article-index-entry">#{link_to 'Edit', edit_article_path(article), :class => 'offlink'}</td>
-        <td class="article-index-entry">#{link_to 'Show', article_path(article), :class => 'offlink'}</td>
-        <td class="article-index-entry">#{link_to 'Delete', article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?",
-                                                                     :method => :delete,
-                                                                     :class => 'offlink'}</td> }
-  end
-
   #Returns HTML formatted comment
   #
   def format_article_comment(comment)
@@ -120,5 +103,21 @@ module ArticlesHelper
                 </div> }
     end
     return str
+  end
+
+  private
+  #Returns HTML formatted article
+  #
+  def format_article(article)
+    %Q{ <td>#{truncate(article.title, :length => 10)}</td>
+        <td>#{truncate(article.body, :length => 10)}</td>
+        <td>#{article.status}</td>
+        <td>#{full_name(Author.find(article.author_id))}</td>
+        <td>#{formatted_date_posted(article)}</td>
+        <td class="article-index-entry">#{link_to 'Edit', edit_article_path(article), :class => 'offlink'}</td>
+        <td class="article-index-entry">#{link_to 'Show', article_path(article), :class => 'offlink'}</td>
+        <td class="article-index-entry">#{link_to 'Delete', article, :confirm => "Are you sure you wane to delete article \"#{article.title}\"?",
+                                                                     :method => :delete,
+                                                                     :class => 'offlink'}</td> }
   end
 end
