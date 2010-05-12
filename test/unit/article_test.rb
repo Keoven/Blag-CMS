@@ -24,7 +24,11 @@ class ArticleTest < ActiveSupport::TestCase
   test 'should have many comments' do
     assert_equal Array, @a.comments.class
   end
- 
+
+  test 'should have many likes' do
+    assert_equal Array, @a.likes.class
+  end
+
   test 'should belong to an author' do
     assert(@a.respond_to? :author)
   end

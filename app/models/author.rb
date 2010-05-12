@@ -2,6 +2,8 @@ class Author < ActiveRecord::Base
   #ASSOCIATIONS
   #
   has_many :articles, :dependent => :destroy
+  has_many :likeables
+  has_many :likes, :source => :article, :through => :likeables
 
   #PLUGINS
   #

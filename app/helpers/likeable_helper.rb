@@ -1,0 +1,2 @@
+module LikeableHelper
+end

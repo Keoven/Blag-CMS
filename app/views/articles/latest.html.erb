@@ -2,13 +2,15 @@
   <h2 class='blog-title'><%= @article.title %></h2>
   <h4 class='blog-author'>
     <%= formatted_date_posted(@article) %> by <%= full_name(@article.author)  %>
-    <span style="float: right"><%= link_to "Print this article", print_article_path(@article) %></span>
+    <%= render :partial => 'article_controls', :locals => {:article => @article, :like_status => nil} %>
   </h4>
   <div class='blog-body'>
     <%= @article.body %>
   </div>
-  <div class='blog-comments'>
-    <%= "<h2 class='blog-title'>Comments</h2>" unless @article.comments.nitems == 1 %>
+  <div style='text-align: center'>
+    <%= link_to 'Hide Comments', "javascript:displayAll('hide')", :id => "clink" %>
+  </div>
+  <div id="blog-comments" class='blog-comments'>
     <%= retrieve_article_comments(@article) %>
     <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
   </div>

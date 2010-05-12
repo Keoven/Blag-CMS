@@ -7,6 +7,8 @@ class Article < ActiveRecord::Base
   #
   belongs_to :author
   has_many :comments, :dependent => :destroy
+  has_many :likeables, :dependent => :destroy
+  has_many :likes, :source => :author, :through => :likeables
 
   #VALIDATIONS
   #

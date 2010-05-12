@@ -1,5 +1,62 @@
 module ArticlesHelper
 
+  #Returns HTML code for controls of article
+  #  - Like/Unlike
+  #  - Hate/Unhate
+  #  - Print
+  #
+  def retrieve_article_controls(article, status)
+    author = current_author
+    str = String.new
+    return link_to 'Print', print_article_path(article) if author.nil?
+    begin
+      url_options = { :controller => :likeables    ,
+                      :action     => :update       ,
+                      :article_id => article.id    ,
+                      :likeable   => { :article_id  => article.id ,
+                                       :author_id   => author.id  ,
+                                       :like_status => 0          , }}
+
+      likeable = article.likeables.find(:first, :conditions => "author_id = #{author.id}")
+      status ||= likeable.like_status
+      url_options[:id] = likeable.id
+      case status
+        when 1, '1'
+          str << "#{link_to_remote 'Unlike', :update => 'article-controls' ,
+                                             :method => :put               ,
+                                             :url    => url_options         } · "
+        when -1, '-1'
+          str << "#{link_to_remote 'Unhate', :update => 'article-controls' ,
+                                             :method => :put               ,
+                                             :url    => url_options         } · "
+      else
+        url_options[:likeable][:like_status] = 1
+        str << "#{link_to_remote 'Like', :update => 'article-controls' ,
+                                         :method => :put               ,
+                                         :url    => url_options         } · "
+
+        url_options[:likeable][:like_status] = -1
+        str << "#{link_to_remote 'Hate', :update => 'article-controls' ,
+                                         :method => :put               ,
+                                         :url    => url_options         } · "
+      end
+    rescue
+      url_options[:action] = :create
+
+      url_options[:likeable][:like_status] = 1
+      str << "#{link_to_remote 'Like', :update => 'article-controls' ,
+                                       :method => :post              ,
+                                       :url    => url_options         } · "
+
+      url_options[:likeable][:like_status] = -1
+      str << "#{link_to_remote 'Hate', :update => 'article-controls' ,
+                                       :method => :post               ,
+                                       :url    => url_options         } · "
+    end
+    str << "#{link_to 'Print', print_article_path(article)}"
+    return str
+  end
+
   #Returns HTML code for articles
   #
   def retrieve_articles(articles)
@@ -16,6 +73,7 @@ module ArticlesHelper
   #
   def retrieve_article_comments(article)
     str = String.new
+    str << "<h2 class='blog-title'>Comments</h2>" unless @article.comments.nitems == 1
     article.comments.each do |comment|
       str << format_article_comment(comment)
     end
@@ -29,6 +87,7 @@ module ArticlesHelper
   end
 
   private
+
   #Returns HTML formatted article
   #
   def format_article(article)
@@ -43,6 +102,7 @@ module ArticlesHelper
                                                                      :method => :delete,
                                                                      :class => 'offlink'}</td> }
   end
+
   #Returns HTML formatted comment
   #
   def format_article_comment(comment)
@@ -53,9 +113,10 @@ module ArticlesHelper
       str = %Q{ <div class='blog-comment'>
                   Comment posted #{date == DateTime.now.strftime(date_format) ? 'today' : 'last ' + date} #{comment.comment_date.strftime("%I:%M:%S %p")} by #{comment.email}
                   <br/>
-                  <div class='comment-body'>
+                  <div id='comment-#{comment.id}' class='comment-body'>
                     #{comment.body}
                   </div>
+                    #{link_to 'Hide', "javascript:display('hide', #{comment.id})", :id => "clink-#{comment.id}"}
                 </div> }
     end
     return str

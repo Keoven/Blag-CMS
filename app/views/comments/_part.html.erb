@@ -1,5 +1,7 @@
 <h2 class='blog-title'>Post Comment</h2>
-<% form_for(:comment, :url => article_comments_path(article)) do |f| %>
+<% form_remote_for(:comment, :url      => article_comments_path(article),
+                             :update   => '',
+                             :position => :bottom) do |f| %>
   <%= f.error_messages %>
   <p class="new-comment-email">
     <%= f.label :email %> <%= f.text_field :email %>
@@ -11,4 +13,3 @@
   <%= f.hidden_field :comment_date, :value => "#{DateTime.now.strftime("%Y%m%d%H%M%S")}" %>
   <%= f.submit "Post Comment" %>
 <% end %>
-

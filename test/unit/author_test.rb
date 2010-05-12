@@ -23,6 +23,10 @@ class AuthorTest < ActiveSupport::TestCase
     assert_equal Array, @a.articles.class
   end
 
+  test 'should have many likes' do
+    assert_equal Array, @a.likes.class
+  end
+
   test 'should have an error on email if blank' do
     assert_equal false, @a_no_email.save
     assert @a_no_email.errors.invalid?(:login)
