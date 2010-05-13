@@ -77,7 +77,7 @@ function clearErrors()
 var restored = false
 function restoreDefaultCommentDivs()
 {
-  if (!restored)
+  if (!restored && !document.getElementById('error-messages').hasChildNodes())
   {
     document.getElementById('first-comment-post').id = 'temp';
     document.getElementById('blog-comments').id = 'first-comment-post';
