@@ -2,16 +2,23 @@
  */
 function display(action, id)
 {
+  var x = 0.6
   if (action == 'show')
   {
-    Effect.SlideDown("comment-"+id);
+    Effect.SlideDown("comment-"+id, {
+      duration: 0.5,
+      transition: Effect.Transitions.linear,
+      from: 0.0,
+      to: x
+      });
+
     document.getElementById("clink-"+id).href= "javascript:display('hide', "+id+")";
     document.getElementById("clink-"+id).innerHTML = "Hide";
   }
 
   if (action == 'hide')
   {
-    Effect.SlideUp("comment-"+id);
+    Effect.Fade("comment-"+id, {duration: 0.5});
     document.getElementById("clink-"+id).href = "javascript:display('show', "+id+")";
     document.getElementById("clink-"+id).innerHTML = "Show";
   }
@@ -49,4 +56,18 @@ function displayAll(action)
     document.getElementById("clink").href = "javascript:displayAll('show')";
     document.getElementById("clink").innerHTML = "Show Comments";
   }
+}
+
+/* Fix tinyMCE + AJAX bug
+ */
+function saveMCE()
+{
+    tinyMCE.activeEditor.save();
+}
+
+/* Clear currently shown in the post comments area errors shown
+ */
+function clearErrors()
+{
+    document.getElementById("error-messages").innerHTML = '';
 }

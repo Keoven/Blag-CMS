@@ -2,7 +2,7 @@
   <h2 class='blog-title'><%= @article.title %></h2>
   <h4 class='blog-author'>
     <%= formatted_date_posted(@article) %> by <%= full_name(@article.author)  %>
-    <%= render :partial => 'article_controls', :locals => {:article => @article, :like_status => nil} %>
+    <%= render :partial => 'articles/article_controls', :locals => {:article => @article, :like_status => nil} %>
   </h4>
   <div class='blog-body'>
     <%= @article.body %>
@@ -13,5 +13,7 @@
   <div id="blog-comments" class='blog-comments'>
     <%= retrieve_article_comments(@article) %>
   </div>
-  <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
+  <div id='blog-post-comment' class='blog-post-comment'>
+    <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
+  </div>
 </div>

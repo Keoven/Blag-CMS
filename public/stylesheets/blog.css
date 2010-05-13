@@ -25,7 +25,7 @@
   text-align: justify;
 }
 
-.blog-comments {
+.blog-comments, .blog-post-comment {
   margin: 10px 0px 10px 20px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .comment-body {
-  margin-top: 10px;
+  margin-top: 0px;
   margin-right: 20px;
   background-color: #233146;
   border: 0.1em solid white;
@@ -111,5 +111,3 @@ div#errorExplanation ul {
 h1 {
   margin: 10px;
 }
-
-
