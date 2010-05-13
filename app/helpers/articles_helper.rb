@@ -1,5 +1,15 @@
 module ArticlesHelper
 
+  # Returns HTML for new comment created by user
+  #
+  def format_new_comment(article, comment, first)
+    if first
+      retrieve_article_comments(article, first)
+    else
+      format_article_comment(comment)
+    end
+  end
+
   #Returns HTML code for controls of article
   #  - Like/Unlike
   #  - Hate/Unhate
@@ -71,12 +81,17 @@ module ArticlesHelper
 
   #Returns HTML code for comments of an article
   #
-  def retrieve_article_comments(article)
+  def retrieve_article_comments(article, first = false)
     str = String.new
-    str << "<h2 class='blog-title'>Comments</h2>" unless @article.comments.nitems == 1
+    if first
+      str << "<div style='text-align: center'>#{link_to 'Hide Comments', "javascript:displayAll('hide', 'blog-comments')", :id => "clink"}</div>"
+      str << "<div id='blog-comments' class='blog-comments'>"
+      str << "<h2 class='blog-title'>Comments</h2>"
+    end
     article.comments.each do |comment|
       str << format_article_comment(comment)
     end
+    str << "</div>" if first
     return str
   end
 

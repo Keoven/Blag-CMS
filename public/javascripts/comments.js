@@ -24,14 +24,14 @@ function display(action, id)
   }
 }
 
-function displayAll(action)
+function displayAll(action, cid)
 {
   if (action == 'show')
   {
-    document.getElementById("blog-comments").style.display = "block";
-    document.getElementById("clink").href= "javascript:displayAll('hide')";
+    document.getElementById(cid).style.display = "block";
+    document.getElementById("clink").href= "javascript:displayAll('hide', '"+cid+"')";
     document.getElementById("clink").innerHTML = "Hide Comments";
-    ch = document.getElementById("blog-comments").children;
+    ch = document.getElementById(cid).children;
     for(var i = 0; i < ch.length; i++)
     {
       ch2 = ch[i].children
@@ -52,8 +52,8 @@ function displayAll(action)
 
   if (action == 'hide')
   {
-    document.getElementById("blog-comments").style.display = "none";
-    document.getElementById("clink").href = "javascript:displayAll('show')";
+    document.getElementById(cid).style.display = "none";
+    document.getElementById("clink").href = "javascript:displayAll('show', '"+cid+"')";
     document.getElementById("clink").innerHTML = "Show Comments";
   }
 }
@@ -70,4 +70,19 @@ function saveMCE()
 function clearErrors()
 {
     document.getElementById("error-messages").innerHTML = '';
+}
+
+/* Used to change submit to default
+ */
+var restored = false
+function restoreDefaultCommentDivs()
+{
+  if (!restored)
+  {
+    document.getElementById('first-comment-post').id = 'temp';
+    document.getElementById('blog-comments').id = 'first-comment-post';
+    document.getElementById('temp').id = 'blog-comments';
+    document.getElementById('clink').href =  "javascript:displayAll('hide', 'first-comment-post')";
+    restored = true;
+  }
 }

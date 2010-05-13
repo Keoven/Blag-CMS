@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
     @comment = @article.comments.build(params[:comment])
     if @comment.save
       flash[:notice] = "Comment was successfuly posted."
-      render :partial => 'articles/single_comment', :locals => {:comment => @comment}
+      render :partial => 'articles/single_comment', :locals => {:comment => @comment, 
+                                                                :article => @article,
+                                                                :first => (@article.comments.length == 1 ? true : false)}
     else
       flash[:notice] = "Failed to post comment."
       render :partial => 'error', :locals => {:comment => @comment, :article => @article}, :status => 444

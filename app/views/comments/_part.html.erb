@@ -1,8 +1,10 @@
 <h2 class='blog-title'>Post Comment</h2>
 <% form_remote_for(:comment, :url      => {:controller => :comments, :action => :create, :article_id => article.id},
-                             :update   => {:success => 'blog-comments', :failure => 'error-messages'},
+                             :update   => {:success => (article.comments.nitems == 1 ? 'first-comment-post' : 'blog-comments'),
+                                           :failure => 'error-messages'},
                              :position => :bottom,
-                             :before => 'clearErrors()' ) do |f|%>
+                             :before   => 'clearErrors()',
+                             :complete => (article.comments.nitems == 1 ? 'restoreDefaultCommentDivs()' : '') ) do |f|%>
   <div id="error-messages" style="margin-left: 20px">
   </div>
   <p class="new-comment-email">

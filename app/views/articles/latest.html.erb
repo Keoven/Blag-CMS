@@ -7,11 +7,8 @@
   <div class='blog-body'>
     <%= @article.body %>
   </div>
-  <div style='text-align: center'>
-    <%= link_to 'Hide Comments', "javascript:displayAll('hide')", :id => "clink" %>
-  </div>
-  <div id="blog-comments" class='blog-comments'>
-    <%= retrieve_article_comments(@article) %>
+  <div id='first-comment-post'>
+    <%= retrieve_article_comments(@article, true) unless @article.comments.nitems == 1%>
   </div>
   <div id='blog-post-comment' class='blog-post-comment'>
     <%= render :partial => 'comments/part', :locals => {:comment => @comments, :article => @article}%>
