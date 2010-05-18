@@ -4,9 +4,9 @@ namespace 'ghub' do
     if args.msg.nil?
       puts 'Please supply message for update.'
     else
-      `git add .`
-      `git commit #{"-am #{args.msg}"}`
-      `git push github master`
+      %x{ git add .
+          git commit -am '#{args.msg}'
+          git push origin master }
     end
   end
 end
